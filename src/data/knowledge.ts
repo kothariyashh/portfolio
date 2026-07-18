@@ -166,9 +166,9 @@ export const knowledge: KBEntry[] = [
     action: { type: "scroll", target: "#contact" },
   },
   {
-    keywords: ["rag", "retrieval", "embedding", "embeddings", "vector", "semantic search", "reranking", "hybrid search"],
+    keywords: ["rag", "retrieval", "embedding", "embeddings", "vector", "semantic search", "reranking", "hybrid search", "ragas", "langfuse", "llamaindex"],
     answer:
-      "Yash builds production RAG systems end to end: embedding generation with OpenAI models, kNN vector search on AWS OpenSearch, hybrid retrieval with reranking, TTL-cached vector stores, and citation-grounded answers with reference tracking so every response is traceable to its source.",
+      "Yash builds production RAG systems end to end: embedding generation with OpenAI models, kNN vector search on AWS OpenSearch, hybrid retrieval with reranking, TTL-cached vector stores, RAGAS-style evaluation and Langfuse tracing, and citation-grounded answers with reference tracking so every response is traceable to its source.",
     action: { type: "scroll", target: "#skills" },
   },
   {

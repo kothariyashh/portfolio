@@ -66,8 +66,8 @@ export const experience = [
 
 export const skillBars = [
   { label: "Python & Backend (FastAPI · Flask)", level: 95 },
-  { label: "Generative AI · LLMs · RAG", level: 92 },
-  { label: "LangChain · LangGraph · Multi-Agent Systems", level: 90 },
+  { label: "Generative AI · LLMs · RAG · LLM Evals (RAGAS)", level: 92 },
+  { label: "LangChain · LangGraph · Langfuse · Multi-Agent Systems", level: 90 },
   { label: "NLP · spaCy · Semantic Search & Embeddings", level: 88 },
   { label: "Computer Vision · OCR (OpenCV · YOLOv8 · PaddleOCR)", level: 85 },
   { label: "Deep Learning (TensorFlow · PyTorch)", level: 82 },
@@ -85,14 +85,16 @@ export const skillGroups = [
       "Gemini",
       "LangChain",
       "LangGraph",
+      "LlamaIndex",
+      "Langfuse",
+      "RAGAS Evals",
       "RAG",
       "Agentic AI",
       "Function Calling",
       "Prompt Engineering",
       "Embeddings & Semantic Search",
       "Hybrid Search & Reranking",
-      "Guardrails & LLM Evals",
-      "Context Optimization",
+      "Guardrails",
     ],
   },
   {
@@ -195,7 +197,7 @@ export const engineering = [
     title: "Observability",
     description:
       "If it isn't measured, it isn't done. I set up structured logging, distributed trace propagation, CloudWatch EMF metrics and Bugsnag error monitoring with typed exceptions and PII redaction.",
-    tags: ["Structured Logging", "CloudWatch EMF", "Bugsnag", "Distributed Tracing"],
+    tags: ["Structured Logging", "CloudWatch EMF", "Langfuse Tracing", "Bugsnag", "Distributed Tracing"],
   },
   {
     icon: "🔐",
