@@ -61,12 +61,6 @@ export default function WelcomeToast() {
                 >
                   Chat with Kothari.AI
                 </button>
-                <button
-                  onClick={dismiss}
-                  className="cursor-pointer rounded-lg border border-line px-3.5 py-1.5 font-display text-xs font-semibold text-dim transition-colors hover:text-body"
-                >
-                  Later
-                </button>
               </div>
             </div>
             <button onClick={dismiss} aria-label="Dismiss" className="cursor-pointer text-dim transition-colors hover:text-body">
