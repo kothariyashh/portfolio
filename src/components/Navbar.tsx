@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Magnetic from "@/components/effects/Magnetic";
+import Logo from "@/components/Logo";
 
 const links = [
   { href: "#about", label: "About" },
@@ -55,9 +56,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex w-[92%] max-w-[1160px] items-center justify-between py-4">
         <a href="#home" className="flex items-center gap-2.5 font-display text-lg font-bold">
-          <span className="grad-bg grid h-9 w-9 place-items-center rounded-xl text-sm font-extrabold text-white shadow-lg shadow-primary/40">
-            YK
-          </span>
+          <Logo className="h-9 w-9 rounded-xl shadow-lg shadow-primary/40 transition-transform duration-300 hover:rotate-6" />
           <span>
             Yash<span className="text-accent">.</span>Kothari
           </span>
