@@ -13,13 +13,8 @@ export default function Preloader() {
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const t = setInterval(() => {
-      setPct((p) => {
-        const next = Math.min(p + 4 + Math.round(Math.random() * 5), 100);
-        if (next >= 100) clearInterval(t);
-        return next;
-      });
-    }, 40);
+    // pure, deterministic increments; the interval dies with the component
+    const t = setInterval(() => setPct((p) => Math.min(p + 5, 100)), 45);
     return () => clearInterval(t);
   }, []);
 
