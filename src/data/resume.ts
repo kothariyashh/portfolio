@@ -171,7 +171,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     emoji: "🤖",
-    title: "Sidekick AI: Multi-Agent Assistant Platform",
+    title: "AI Personal Assistant: Multi-Agent Platform",
     description:
       "Production-grade FastAPI backend powering an AI assistant with REST + SSE streaming responses. A LangGraph supervisor agent orchestrates specialized agents for email, calendar, notes, tasks, messenger, web search, image generation and maps, with citation-ready reference tracking, RAG over OpenSearch vector search, resilient Vertex AI/Gemini fallbacks, rate-limit budgeting and circuit breakers.",
     tags: ["FastAPI", "LangGraph", "Gemini", "OpenSearch", "AWS ECS"],

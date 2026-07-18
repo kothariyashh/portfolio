@@ -3,6 +3,10 @@ import ScrollProgress from "@/components/effects/ScrollProgress";
 import CursorFX from "@/components/effects/CursorFX";
 import Spotlight from "@/components/effects/Spotlight";
 import Orbs from "@/components/effects/Orbs";
+import AIDivider from "@/components/effects/AIDivider";
+import WelcomeToast from "@/components/effects/WelcomeToast";
+import ChatBot from "@/components/ChatBot";
+import Tour from "@/components/Tour";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
@@ -32,15 +36,21 @@ export default function Home() {
         <Marquee />
         <About />
         <Experience />
+        <AIDivider />
         <Skills />
+        <AIDivider />
         <Engineering />
         <Projects />
+        <AIDivider />
         <Awards />
         <WhyMe />
         <Contact />
       </main>
       <Footer />
       <BackToTop />
+      <ChatBot />
+      <Tour />
+      <WelcomeToast />
     </>
   );
 }

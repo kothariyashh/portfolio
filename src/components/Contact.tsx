@@ -19,14 +19,37 @@ const cards = [
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const body = encodeURIComponent(
-      `Hi Yash,\n\n${form.message}\n\nRegards,\n${form.name} (${form.email})`,
-    );
-    const subject = encodeURIComponent(form.subject || `Portfolio inquiry from ${form.name}`);
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    setStatus("sending");
+    try {
+      const res = await fetch(`https://formsubmit.co/ajax/${profile.email}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          _subject: `Portfolio contact from ${form.name}: ${form.subject}`,
+          _template: "table",
+          _captcha: "false",
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      setStatus("sent");
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch {
+      // delivery service unreachable: fall back to the visitor's mail client
+      setStatus("error");
+      const body = encodeURIComponent(
+        `Hi Yash,\n\n${form.message}\n\nRegards,\n${form.name} (${form.email})`,
+      );
+      const subject = encodeURIComponent(form.subject || `Portfolio inquiry from ${form.name}`);
+      window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+    }
   }
 
   const inputClass =
@@ -106,14 +129,22 @@ export default function Contact() {
               />
               <button
                 type="submit"
-                className="grad-bg group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl px-7 py-3.5 font-display font-semibold text-white shadow-xl shadow-primary/40 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/50"
+                disabled={status === "sending"}
+                className="grad-bg group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl px-7 py-3.5 font-display font-semibold text-white shadow-xl shadow-primary/40 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/50 disabled:cursor-wait disabled:opacity-70"
               >
-                Send Message
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 transition-transform group-hover:translate-x-1">
-                  <path d="m22 2-7 20-4-9-9-4Z" />
-                  <path d="M22 2 11 13" />
-                </svg>
+                {status === "sending" ? "Sending..." : status === "sent" ? "Message Sent ✓" : "Send Message"}
+                {status !== "sending" && status !== "sent" && (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4 transition-transform group-hover:translate-x-1">
+                    <path d="m22 2-7 20-4-9-9-4Z" />
+                    <path d="M22 2 11 13" />
+                  </svg>
+                )}
               </button>
+              {status === "sent" && (
+                <p className="mt-4 text-center text-sm text-accent">
+                  Thanks for reaching out! Your message landed in my inbox and I&apos;ll reply soon.
+                </p>
+              )}
             </form>
           </Reveal>
         </div>

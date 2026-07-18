@@ -159,6 +159,127 @@ body {
   );
 }
 
+/* ── Animated neural logo ── */
+@keyframes logo-node-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.45);
+    opacity: 1;
+  }
+}
+@keyframes logo-core-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.18);
+  }
+}
+@keyframes logo-edge-flow {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+@keyframes logo-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logo-node {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: logo-node-pulse 2.6s ease-in-out infinite;
+}
+.logo-core {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: logo-core-pulse 2s ease-in-out infinite;
+}
+.logo-edge {
+  stroke-dasharray: 3 11;
+  animation: logo-edge-flow 1.6s linear infinite;
+}
+.logo-orbit {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: logo-orbit-spin 9s linear infinite;
+}
+
+/* ── Bento grid: rotating gradient ring on feature tiles ── */
+@property --bento-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes bento-spin {
+  to {
+    --bento-angle: 360deg;
+  }
+}
+.bento-ring {
+  background: conic-gradient(
+    from var(--bento-angle),
+    #6c5ce7,
+    #00cec9,
+    #a29bfe,
+    #fd79a8,
+    #6c5ce7
+  );
+  animation: bento-spin 5s linear infinite;
+}
+.bento-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.12) 50%, transparent 60%);
+  transform: translateX(-100%);
+  pointer-events: none;
+}
+.group:hover .bento-shine {
+  transition: transform 0.7s ease;
+  transform: translateX(100%);
+}
+
+/* ── Data-stream divider pulses ── */
+@keyframes pulse-travel {
+  from {
+    left: -12%;
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  to {
+    left: 112%;
+    opacity: 0;
+  }
+}
+.data-pulse {
+  position: absolute;
+  top: calc(50% - 1.5px);
+  height: 3px;
+  width: 48px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, transparent, #6c5ce7, transparent);
+  animation: pulse-travel 4.5s linear infinite;
+}
+.data-pulse--teal {
+  background: linear-gradient(90deg, transparent, #00cec9, transparent);
+  animation-delay: -1.5s;
+  animation-duration: 5.5s;
+}
+.data-pulse--pink {
+  background: linear-gradient(90deg, transparent, #fd79a8, transparent);
+  animation-delay: -3s;
+  animation-duration: 6.5s;
+}
+
 /* ── Tech marquee ── */
 @keyframes marquee-scroll {
   from {

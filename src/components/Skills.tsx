@@ -33,22 +33,65 @@ export default function Skills() {
           ))}
         </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {skillGroups.map((g, i) => (
-            <Reveal key={g.title} delay={i * 0.08}>
-              <Tilt max={8}>
-                <div className="h-full rounded-2xl border border-line bg-surface p-7 transition-all hover:border-accent hover:shadow-2xl hover:shadow-accent/15">
-                  <div className="mb-3.5 text-3xl">{g.icon}</div>
-                  <h3 className="mb-4 font-display text-lg font-bold">{g.title}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {g.items.map((item) => (
-                      <Chip key={item} label={item} />
-                    ))}
-                  </div>
+        <div className="grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {skillGroups.map((g, i) => {
+            const feature = g.title === "GenAI & LLMs";
+            const wide = g.title === "Data & Cloud";
+            const span = feature
+              ? "sm:col-span-2 lg:row-span-2"
+              : wide
+                ? "sm:col-span-2"
+                : "";
+
+            const inner = (
+              <div
+                className={`group relative flex h-full flex-col overflow-hidden p-6 transition-all hover:-translate-y-1 hover:shadow-2xl hover:shadow-primary/20 ${
+                  feature
+                    ? "justify-center rounded-[calc(1.5rem-2px)] bg-bg p-8 backdrop-blur-2xl"
+                    : "rounded-3xl border border-line bg-surface hover:border-accent"
+                }`}
+              >
+                <span className="bento-shine" />
+                <div className="mb-3.5 flex items-center gap-3">
+                  <span
+                    className={`grid shrink-0 place-items-center rounded-2xl border border-chipline bg-chipbg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 ${
+                      feature ? "h-16 w-16 text-4xl" : "h-11 w-11 text-xl"
+                    }`}
+                  >
+                    {g.icon}
+                  </span>
+                  <h3 className={`font-display font-bold ${feature ? "text-2xl" : "text-base"}`}>
+                    {g.title}
+                  </h3>
                 </div>
-              </Tilt>
-            </Reveal>
-          ))}
+                {feature && (
+                  <p className="mb-4 text-sm text-dim">
+                    My daily toolkit: agentic systems, retrieval and prompt-optimized LLM apps
+                    shipped to production.
+                  </p>
+                )}
+                <div className="flex flex-wrap gap-2">
+                  {g.items.map((item) => (
+                    <Chip key={item} label={item} />
+                  ))}
+                </div>
+              </div>
+            );
+
+            return (
+              <Reveal key={g.title} delay={i * 0.07} className={span}>
+                {feature ? (
+                  <div className="bento-ring h-full rounded-3xl p-[2px] shadow-2xl shadow-primary/30">
+                    {inner}
+                  </div>
+                ) : (
+                  <Tilt max={8} className="h-full">
+                    {inner}
+                  </Tilt>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import { whyHireMe } from "@/data/resume";
 import SectionHead from "@/components/SectionHead";
 import Reveal from "@/components/effects/Reveal";
-import Tilt from "@/components/effects/Tilt";
 import Magnetic from "@/components/effects/Magnetic";
 
 export default function WhyMe() {
@@ -51,27 +50,27 @@ export default function WhyMe() {
             </Magnetic>
           </Reveal>
 
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="overflow-hidden rounded-3xl border border-line">
             {whyHireMe.challenges.map((c, i) => (
-              <Reveal key={c.problem} delay={(i % 2) * 0.1}>
-                <Tilt max={8}>
-                  <div className="group flex h-full flex-col rounded-2xl border border-line bg-surface p-6 transition-all hover:-translate-y-1 hover:border-accent hover:shadow-2xl hover:shadow-accent/20">
-                    <div className="mb-3 flex items-center justify-between">
-                      <span className="text-2xl transition-transform duration-300 group-hover:scale-125">
-                        {c.icon}
-                      </span>
-                      <span className="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1 font-mono text-[10px] text-accent">
-                        {c.metric}
-                      </span>
-                    </div>
-                    <h3 className="mb-2 font-display text-[15px] font-bold">
+              <Reveal key={c.problem} delay={i * 0.07}>
+                <div className="group relative flex flex-col gap-3 border-b border-line px-6 py-6 transition-colors duration-300 last:border-0 hover:bg-surface sm:flex-row sm:items-center sm:gap-5">
+                  <span className="grad-bg absolute top-0 bottom-0 left-0 w-[3px] origin-top scale-y-0 transition-transform duration-300 group-hover:scale-y-100" />
+                  <span className="text-2xl transition-transform duration-300 group-hover:scale-125">
+                    {c.icon}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="mb-1 font-display text-sm font-bold">
                       <span className="text-dim line-through decoration-pink/60 decoration-2">
                         {c.problem}
                       </span>
+                      <span className="gradient-text ml-2 no-underline">→ solved</span>
                     </h3>
                     <p className="text-[13px] leading-relaxed text-dim">{c.solution}</p>
                   </div>
-                </Tilt>
+                  <span className="shrink-0 self-start rounded-full border border-accent/30 bg-accent/10 px-3 py-1.5 font-mono text-[10px] whitespace-nowrap text-accent sm:self-center">
+                    {c.metric}
+                  </span>
+                </div>
               </Reveal>
             ))}
           </div>
