@@ -116,6 +116,12 @@ export const knowledge: KBEntry[] = [
     action: { type: "open", url: "https://github.com/kothariyashh" },
   },
   {
+    keywords: ["tree", "skill tree", "overview", "big picture", "summary", "specialties"],
+    answer:
+      "Here's the Yash Tree: one animated structure showing how everything grows from a single root. Data science branches into GenAI & agents, computer vision, data engineering and production systems.",
+    action: { type: "scroll", target: "#tree" },
+  },
+  {
     keywords: ["activity", "contributions", "contribution", "commits", "streak", "heatmap", "coding activity"],
     answer:
       "Here's Yash's coding activity: a GitHub-style contribution heatmap with yearly commits, current streak and best day. Green means shipping!",

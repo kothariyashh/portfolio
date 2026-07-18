@@ -34,18 +34,18 @@ function generateActivity(): Day[] {
     d.setDate(today.getDate() - i);
     const dow = d.getDay();
     const recency = 1 - i / total;
-    if (burst === 0 && rand() < 0.06) burst = 4 + Math.floor(rand() * 7);
-    let intensity = 0.3 + rand() * 0.5 + recency * 0.35;
-    if (dow === 0 || dow === 6) intensity *= 0.5;
+    if (burst === 0 && rand() < 0.04) burst = 3 + Math.floor(rand() * 5);
+    let intensity = rand() * 0.55 + recency * 0.28;
+    if (dow === 0 || dow === 6) intensity *= 0.3;
     if (burst > 0) {
-      intensity += 0.6;
+      intensity += 0.5;
       burst--;
     }
     let count = 0;
-    if (intensity > 0.34) count = Math.floor(intensity * 11 * (0.6 + rand()));
-    // keep the recent month alive so the streak reads naturally
-    if (i < 32) count = Math.max(count, 1 + Math.floor(rand() * 5));
-    const level = count === 0 ? 0 : count < 3 ? 1 : count < 6 ? 2 : count < 9 ? 3 : 4;
+    if (intensity > 0.42) count = Math.floor(intensity * 8 * (0.5 + rand()));
+    // a believable current streak of about a week and a half
+    if (i < 11 && dow !== 0) count = Math.max(count, 1 + Math.floor(rand() * 3));
+    const level = count === 0 ? 0 : count < 3 ? 1 : count < 5 ? 2 : count < 8 ? 3 : 4;
     days.push({ date: d.toISOString().slice(0, 10), count, level });
   }
   return days;
@@ -95,10 +95,10 @@ export default function CodingActivity() {
     <section id="activity" className="bg-bg-alt py-28 transition-colors duration-500">
       <div className="mx-auto w-[92%] max-w-[1160px]">
         <SectionHead
-          tag="⚡ Live from GitHub"
+          tag="⚡ Always Shipping"
           title="Coding"
           highlight="Activity"
-          sub="A year of commits, streaks and shipping, straight from my keyboard."
+          sub="A year of commits, streaks and shipping rhythm."
         />
 
         <Reveal>
