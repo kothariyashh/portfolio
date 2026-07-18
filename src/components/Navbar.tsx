@@ -63,8 +63,8 @@ export default function Navbar() {
         </a>
 
         <nav
-          className={`fixed top-[64px] right-0 left-0 flex flex-col gap-1 border-b border-line bg-navbg p-5 backdrop-blur-2xl transition-transform duration-400 md:static md:translate-y-0 md:flex-row md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none ${
-            open ? "translate-y-0" : "-translate-y-[130%] md:translate-y-0"
+          className={`fixed top-[68px] right-0 left-0 flex flex-col gap-1 border-b border-line bg-navbg p-5 backdrop-blur-2xl transition-transform duration-400 lg:static lg:translate-y-0 lg:flex-row lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none ${
+            open ? "translate-y-0" : "-translate-y-[130%] lg:translate-y-0"
           }`}
           aria-label="Primary"
         >
@@ -125,7 +125,7 @@ export default function Navbar() {
           </Magnetic>
 
           <button
-            className="flex flex-col gap-[5px] p-2 md:hidden"
+            className="flex flex-col gap-[5px] p-2 lg:hidden"
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
             aria-expanded={open}

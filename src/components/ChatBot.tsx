@@ -81,8 +81,6 @@ export default function ChatBot() {
         document.querySelector("#projects")?.scrollIntoView({ behavior: "smooth" });
         window.dispatchEvent(new CustomEvent("yk:filter", { detail: action.value }));
       }, 500);
-    } else if (action.type === "open") {
-      setTimeout(() => window.open(action.url, "_blank", "noopener"), 400);
     } else if (action.type === "tour") {
       setTimeout(() => {
         setOpen(false);
@@ -101,6 +99,19 @@ export default function ChatBot() {
 
     const entry = matchEntry(query);
     const answer = entry ? entry.answer : fallbackAnswer;
+
+    // open/download actions must run inside the user's click gesture,
+    // or the browser's popup blocker silently swallows them
+    if (entry?.action?.type === "open") {
+      const { url } = entry.action;
+      const a = document.createElement("a");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    }
 
     // stream the reply word by word, like an LLM response
     setTimeout(() => {

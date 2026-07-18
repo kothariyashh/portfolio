@@ -118,7 +118,7 @@ export const knowledge: KBEntry[] = [
   {
     keywords: ["resume", "cv", "download", "pdf"],
     answer:
-      "Downloading Yash's resume for you! You can also find the Resume button in the hero section.",
+      "Opening Yash's resume in a new tab where you can read it and download it. There's also a View Resume button in the hero section!",
     action: { type: "open", url: "Yash_Kothari_Resume.pdf" },
   },
   {
