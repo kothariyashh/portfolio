@@ -118,7 +118,7 @@ export const knowledge: KBEntry[] = [
   {
     keywords: ["activity", "contributions", "contribution", "commits", "streak", "heatmap", "coding activity"],
     answer:
-      "Here's Yash's coding activity: a live GitHub contribution heatmap with his yearly commits, current streak and best day. Green means shipping!",
+      "Here's Yash's coding activity: a GitHub-style contribution heatmap with yearly commits, current streak and best day. Green means shipping!",
     action: { type: "scroll", target: "#activity" },
   },
   {

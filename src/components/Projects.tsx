@@ -1,127 +1,203 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { projects, projectFilters } from "@/data/resume";
+import { projects } from "@/data/resume";
 import SectionHead from "@/components/SectionHead";
+import Chip from "@/components/Chip";
 import Reveal from "@/components/effects/Reveal";
-import Tilt from "@/components/effects/Tilt";
 
-const categoryLabel: Record<string, string> = {
-  genai: "GenAI & Agents",
-  docai: "Document AI",
-  vision: "Computer Vision",
-  automation: "Automation",
+const fileNames = [
+  "multi_agent_assistant.py",
+  "financial_doc_extraction.py",
+  "enterprise_idp_platform.py",
+  "recruitment_automation.py",
+  "doc_understanding_ai.py",
+  "handwritten_form_ai.py",
+];
+
+const categoryMeta: Record<string, { label: string; color: string }> = {
+  genai: { label: "GenAI & Agents", color: "#a29bfe" },
+  docai: { label: "Document AI", color: "#fd79a8" },
+  vision: { label: "Computer Vision", color: "#00cec9" },
+  automation: { label: "Automation", color: "#ffa502" },
 };
 
-function TechList({ tags }: { tags: string[] }) {
-  return (
-    <div className="mt-auto flex flex-wrap items-center gap-x-2.5 gap-y-1.5 border-t border-line pt-4">
-      {tags.map((t, i) => (
-        <span key={t} className="flex items-center gap-2.5 font-mono text-[11px] text-dim">
-          {t}
-          {i < tags.length - 1 && <span className="text-accent/60">·</span>}
-        </span>
-      ))}
-    </div>
-  );
-}
+const CYCLE_MS = 6500;
 
 export default function Projects() {
-  const [filter, setFilter] = useState("all");
-  const visible = projects.filter((p) => filter === "all" || p.categories.includes(filter));
+  const [active, setActive] = useState(0);
+  const [auto, setAuto] = useState(true);
+  const hovering = useRef(false);
 
-  // the Kothari.AI chatbot drives this filter too
+  // auto-cycle through projects until the visitor takes over
   useEffect(() => {
-    const onFilter = (e: Event) => setFilter((e as CustomEvent<string>).detail);
+    if (!auto) return;
+    const t = setInterval(() => {
+      if (!hovering.current) setActive((a) => (a + 1) % projects.length);
+    }, CYCLE_MS);
+    return () => clearInterval(t);
+  }, [auto]);
+
+  // the Kothari.AI chatbot can jump to a category
+  useEffect(() => {
+    const onFilter = (e: Event) => {
+      const cat = (e as CustomEvent<string>).detail;
+      const idx = projects.findIndex((p) => cat === "all" || p.categories.includes(cat));
+      if (idx >= 0) {
+        setActive(idx);
+        setAuto(false);
+      }
+    };
     window.addEventListener("yk:filter", onFilter);
     return () => window.removeEventListener("yk:filter", onFilter);
   }, []);
 
+  const p = projects[active];
+  const meta = categoryMeta[p.categories[0]];
+
   return (
     <section id="projects" className="bg-bg-alt py-28 transition-colors duration-500">
       <div className="mx-auto w-[92%] max-w-[1160px]">
-        <SectionHead tag="05 · What I've Built" title="Featured" highlight="Projects" />
+        <SectionHead
+          tag="05 · What I've Built"
+          title="Project"
+          highlight="Explorer"
+          sub="Six production AI platforms. Pick a file, or let it cycle."
+        />
 
-        <Reveal className="mb-12 flex flex-wrap justify-center gap-3">
-          {projectFilters.map((f) => (
-            <button
-              key={f.key}
-              onClick={() => setFilter(f.key)}
-              className={`cursor-pointer rounded-full px-5 py-2 font-display text-sm font-semibold transition-all ${
-                filter === f.key
-                  ? "grad-bg text-white shadow-lg shadow-primary/40"
-                  : "border border-line bg-surface text-dim hover:-translate-y-0.5 hover:border-primary hover:text-body"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-        </Reveal>
-
-        <motion.div layout className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <AnimatePresence mode="popLayout">
-            {visible.map((p, idx) => (
-              <motion.article
-                key={p.title}
-                layout
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.92 }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className={p.flagship ? "sm:col-span-2 lg:col-span-3" : ""}
+        <Reveal>
+          <div
+            className="overflow-hidden rounded-3xl border border-line bg-bg shadow-2xl shadow-black/25"
+            onMouseEnter={() => (hovering.current = true)}
+            onMouseLeave={() => (hovering.current = false)}
+          >
+            {/* window chrome */}
+            <div className="flex items-center gap-2 border-b border-line bg-surface px-5 py-3.5">
+              <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
+              <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
+              <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+              <span className="ml-3 font-mono text-xs text-dim">
+                ~/yash/projects · {projects.length} files
+              </span>
+              <button
+                onClick={() => setAuto((a) => !a)}
+                className={`ml-auto flex cursor-pointer items-center gap-1.5 rounded-full border px-2.5 py-1 font-mono text-[10px] transition-colors ${
+                  auto
+                    ? "border-accent/30 bg-accent/10 text-accent"
+                    : "border-line text-dim hover:text-body"
+                }`}
+                title={auto ? "Auto-cycling · click to pause" : "Paused · click to resume"}
               >
-                {p.flagship ? (
-                  <div className="bento-ring h-full rounded-3xl p-[1.5px] shadow-2xl shadow-primary/20">
-                    <div className="group relative flex h-full flex-col gap-6 overflow-hidden rounded-[calc(1.5rem-1.5px)] bg-bg p-8 backdrop-blur-2xl md:flex-row md:items-center md:gap-10">
-                      <span className="bento-shine" />
-                      <div className="flex shrink-0 items-center gap-5 md:w-52 md:flex-col md:items-start md:gap-4">
-                        <span className="grid h-16 w-16 place-items-center rounded-2xl border border-chipline bg-chipbg text-3xl transition-transform duration-300 group-hover:scale-110">
-                          {p.emoji}
+                <span className={`h-1.5 w-1.5 rounded-full ${auto ? "status-dot bg-accent" : "bg-dim"}`} />
+                {auto ? "auto-cycle" : "paused"}
+              </button>
+            </div>
+
+            <div className="flex flex-col lg:flex-row">
+              {/* file sidebar */}
+              <aside className="flex gap-1 overflow-x-auto border-b border-line bg-surface/50 p-3 lg:w-80 lg:flex-col lg:overflow-visible lg:border-r lg:border-b-0">
+                <p className="mb-1 hidden px-3 pt-1 font-mono text-[10px] tracking-widest text-dim uppercase lg:block">
+                  Explorer
+                </p>
+                {projects.map((proj, i) => {
+                  const m = categoryMeta[proj.categories[0]];
+                  const isActive = i === active;
+                  return (
+                    <button
+                      key={proj.title}
+                      onClick={() => {
+                        setActive(i);
+                        setAuto(false);
+                      }}
+                      className={`group relative flex shrink-0 cursor-pointer items-center gap-2.5 rounded-xl px-3.5 py-2.5 text-left font-mono text-[12px] transition-all ${
+                        isActive
+                          ? "bg-chipbg text-body shadow-lg shadow-primary/10"
+                          : "text-dim hover:bg-surface hover:text-body"
+                      }`}
+                    >
+                      {isActive && (
+                        <motion.span
+                          layoutId="file-rail"
+                          className="grad-bg absolute top-1.5 bottom-1.5 left-0 hidden w-[3px] rounded-full lg:block"
+                        />
+                      )}
+                      <span className="text-sm">{proj.emoji}</span>
+                      <span className="whitespace-nowrap">{fileNames[i]}</span>
+                      <span
+                        className="ml-auto hidden h-2 w-2 shrink-0 rounded-full lg:block"
+                        style={{ background: m.color, opacity: isActive ? 1 : 0.45 }}
+                      />
+                      {/* auto-cycle progress on the active file */}
+                      {isActive && auto && (
+                        <motion.span
+                          key={`progress-${active}`}
+                          className="absolute right-2 bottom-1 left-2 hidden h-[2px] origin-left rounded-full bg-accent/40 lg:block"
+                          initial={{ scaleX: 0 }}
+                          animate={{ scaleX: 1 }}
+                          transition={{ duration: CYCLE_MS / 1000, ease: "linear" }}
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+              </aside>
+
+              {/* detail pane */}
+              <div className="relative min-h-[380px] flex-1">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={active}
+                    initial={{ opacity: 0, x: 28 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -28 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="flex h-full flex-col p-7 md:p-10"
+                  >
+                    <div className="mb-4 flex flex-wrap items-center gap-3">
+                      <span className="grid h-14 w-14 place-items-center rounded-2xl border border-chipline bg-chipbg text-2xl">
+                        {p.emoji}
+                      </span>
+                      <div>
+                        <p className="font-mono text-[10px] tracking-widest uppercase" style={{ color: meta.color }}>
+                          {meta.label}
+                        </p>
+                        <h3 className="font-display text-2xl font-bold">{p.title}</h3>
+                      </div>
+                      {p.flagship && (
+                        <span className="badge-glow grad-bg ml-auto rounded-full px-3 py-1 text-[10px] font-bold tracking-wider text-white uppercase">
+                          ⭐ Flagship
                         </span>
-                        <div>
-                          <span className="badge-glow grad-bg mb-2 inline-block rounded-full px-3 py-1 text-[10px] font-bold tracking-wider text-white uppercase">
-                            ⭐ Flagship
-                          </span>
-                          <p className="font-mono text-[10px] tracking-widest text-accent uppercase">
-                            {categoryLabel[p.categories[0]]}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex flex-1 flex-col">
-                        <h3 className="mb-2.5 font-display text-2xl font-bold">{p.title}</h3>
-                        <p className="mb-5 text-sm text-dim">{p.description}</p>
-                        <TechList tags={p.tags} />
-                      </div>
+                      )}
                     </div>
-                  </div>
-                ) : (
-                  <Tilt max={6} className="h-full">
-                    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-line bg-surface p-7 transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/60 hover:shadow-2xl hover:shadow-primary/20">
-                      <span className="grad-bg absolute top-0 left-0 h-[2.5px] w-full origin-left scale-x-0 transition-transform duration-500 group-hover:scale-x-100" />
-                      <div className="mb-5 flex items-start justify-between">
-                        <span className="grid h-13 w-13 place-items-center rounded-2xl border border-chipline bg-chipbg text-2xl transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
-                          {p.emoji}
+
+                    {/* editor-style body with a comment gutter */}
+                    <div className="mb-6 flex flex-1 gap-4 border-l-2 pl-4" style={{ borderColor: `${meta.color}55` }}>
+                      <p className="text-sm leading-relaxed text-dim">
+                        <span className="font-mono text-xs" style={{ color: meta.color }}>
+                          {'""" '}
                         </span>
-                        <span className="font-mono text-[11px] text-dim/60">0{idx + 1}</span>
-                      </div>
-                      <p className="mb-1.5 font-mono text-[10px] tracking-widest text-accent uppercase">
-                        {categoryLabel[p.categories[0]]}
-                      </p>
-                      <h3 className="mb-2.5 font-display text-lg leading-snug font-bold transition-colors group-hover:text-primary-2">
-                        {p.title}
-                      </h3>
-                      <p className="mb-5 flex-1 text-[13px] leading-relaxed text-dim">
                         {p.description}
+                        <span className="font-mono text-xs" style={{ color: meta.color }}>
+                          {' """'}
+                        </span>
                       </p>
-                      <TechList tags={p.tags} />
                     </div>
-                  </Tilt>
-                )}
-              </motion.article>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+
+                    <div className="flex flex-wrap items-center gap-2 border-t border-line pt-5">
+                      <span className="mr-1 font-mono text-[10px] tracking-widest text-dim uppercase">
+                        import
+                      </span>
+                      {p.tags.map((t) => (
+                        <Chip key={t} label={t} />
+                      ))}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

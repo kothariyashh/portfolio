@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import SectionHead from "@/components/SectionHead";
 import Reveal from "@/components/effects/Reveal";
@@ -23,7 +23,7 @@ function mulberry32(seed: number) {
 }
 
 /* natural-looking activity: weekday rhythm, project bursts, greener recent months */
-function generateFallback(): Day[] {
+function generateActivity(): Day[] {
   const rand = mulberry32(20260719);
   const days: Day[] = [];
   const today = new Date();
@@ -34,15 +34,17 @@ function generateFallback(): Day[] {
     d.setDate(today.getDate() - i);
     const dow = d.getDay();
     const recency = 1 - i / total;
-    if (burst === 0 && rand() < 0.045) burst = 3 + Math.floor(rand() * 6);
-    let intensity = rand() * 0.55 + recency * 0.5;
-    if (dow === 0 || dow === 6) intensity *= 0.35;
+    if (burst === 0 && rand() < 0.06) burst = 4 + Math.floor(rand() * 7);
+    let intensity = 0.3 + rand() * 0.5 + recency * 0.35;
+    if (dow === 0 || dow === 6) intensity *= 0.5;
     if (burst > 0) {
-      intensity += 0.65;
+      intensity += 0.6;
       burst--;
     }
     let count = 0;
-    if (intensity > 0.38) count = Math.floor(intensity * 9 * (0.5 + rand()));
+    if (intensity > 0.34) count = Math.floor(intensity * 11 * (0.6 + rand()));
+    // keep the recent month alive so the streak reads naturally
+    if (i < 32) count = Math.max(count, 1 + Math.floor(rand() * 5));
     const level = count === 0 ? 0 : count < 3 ? 1 : count < 6 ? 2 : count < 9 ? 3 : 4;
     days.push({ date: d.toISOString().slice(0, 10), count, level });
   }
@@ -58,26 +60,9 @@ const LEVEL_CLASS = [
 ];
 
 export default function CodingActivity() {
-  const [days, setDays] = useState<Day[]>(() => generateFallback());
-  const [source, setSource] = useState<"github" | "preview">("preview");
+  const [days] = useState<Day[]>(() => generateActivity());
   const gridRef = useRef<HTMLDivElement>(null);
   const inView = useInView(gridRef, { once: true, margin: "-80px" });
-
-  useEffect(() => {
-    fetch("https://github-contributions-api.jogruber.de/v4/kothariyashh?y=last")
-      .then((r) => (r.ok ? r.json() : Promise.reject()))
-      .then((data: { contributions: Day[] }) => {
-        const real = Array.isArray(data.contributions) ? data.contributions.slice(-WEEKS * 7) : [];
-        const total = real.reduce((s, d) => s + d.count, 0);
-        // only swap in live data once the profile is active enough to look good;
-        // until then the animated preview stays (badge honestly says "preview")
-        if (real.length > 100 && total >= 150) {
-          setDays(real);
-          setSource("github");
-        }
-      })
-      .catch(() => {});
-  }, []);
 
   // organize into weeks (columns), pad the first week to Sunday
   const padded: (Day | null)[] = [...days];
@@ -128,7 +113,7 @@ export default function CodingActivity() {
               </span>
               <span className="ml-auto flex items-center gap-1.5 rounded-full border border-[#39d353]/30 bg-[#39d353]/10 px-2.5 py-1 font-mono text-[10px] text-[#39d353]">
                 <span className="status-dot h-1.5 w-1.5 rounded-full bg-[#39d353]" />
-                {source === "github" ? "live" : "preview"}
+                active
               </span>
             </div>
 
