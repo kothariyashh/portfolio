@@ -16,17 +16,17 @@ type Branch = {
   leafW?: number;
 };
 
-const ROOT = { x: 450, y: 152 };
-const FOUNDATION_Y = 34;
-const BRANCH_Y = 306;
-const LEAF_Y = 440;
+const ROOT = { x: 480, y: 158 };
+const FOUNDATION_Y = 40;
+const BRANCH_Y = 312;
+const LEAF_Y = 446;
 const LEAF_GAP = 44;
 
 const foundations = [
-  { emoji: "🐍", label: "Python", x: 225 },
-  { emoji: "📐", label: "Mathematics", x: 375 },
-  { emoji: "📊", label: "Statistics", x: 525 },
-  { emoji: "💾", label: "Data", x: 675 },
+  { emoji: "🐍", label: "Python", x: 300 },
+  { emoji: "📐", label: "Mathematics", x: 420 },
+  { emoji: "📊", label: "Statistics", x: 540 },
+  { emoji: "💾", label: "Data", x: 660 },
 ];
 
 const branches: Branch[] = [
@@ -34,10 +34,10 @@ const branches: Branch[] = [
     emoji: "🤖",
     label: "GenAI & Agents",
     color: "#a29bfe",
-    x: 140,
+    x: 150,
     target: "#projects",
     primary: true,
-    leafW: 224,
+    leafW: 240,
     leaves: [
       "LangGraph Multi-Agent Orchestration",
       "LangChain · LlamaIndex Pipelines",
@@ -50,7 +50,7 @@ const branches: Branch[] = [
     emoji: "👁️",
     label: "Computer Vision",
     color: "#00cec9",
-    x: 400,
+    x: 415,
     target: "#projects",
     leaves: ["YOLOv8 · SAM Segmentation", "OCR & Document AI", "3D Reconstruction"],
   },
@@ -58,7 +58,7 @@ const branches: Branch[] = [
     emoji: "🔄",
     label: "Data Engineering",
     color: "#fd79a8",
-    x: 615,
+    x: 655,
     target: "#skills",
     leaves: ["ETL · Airflow · Kafka", "Vector Databases · FAISS", "Event-Driven Systems"],
   },
@@ -66,8 +66,9 @@ const branches: Branch[] = [
     emoji: "🚀",
     label: "Production",
     color: "#ffa502",
-    x: 800,
+    x: 865,
     target: "#engineering",
+    leafW: 190,
     leaves: ["AWS · GCP · Docker · CI/CD", "Circuit Breakers & Fallbacks"],
   },
 ];
@@ -105,7 +106,7 @@ export default function SkillTree() {
               className="pointer-events-none absolute inset-0 opacity-40 [background-image:radial-gradient(var(--line)_1px,transparent_1px)] [background-size:26px_26px]"
             />
             <svg
-              viewBox="0 0 900 680"
+              viewBox="0 0 980 680"
               className="relative mx-auto block min-w-[760px]"
               role="img"
               aria-label="AI knowledge graph of Yash Kothari"
@@ -146,18 +147,12 @@ export default function SkillTree() {
                   >
                     <animate attributeName="stroke-dashoffset" from="0" to="-24" dur="1.4s" repeatCount="indefinite" />
                   </path>
-                  <rect
-                    x={f.x - 62}
-                    y={FOUNDATION_Y - 16}
-                    width="124"
-                    height="32"
-                    rx="16"
-                    fill="var(--chip-bg)"
-                    stroke="var(--chip-border)"
-                    strokeWidth="1"
-                  />
-                  <text x={f.x} y={FOUNDATION_Y + 5} textAnchor="middle" fontSize="12" fill="var(--body)" fontFamily="var(--font-inter)">
-                    {f.emoji} {f.label}
+                  <circle cx={f.x} cy={FOUNDATION_Y} r="17" fill="var(--chip-bg)" stroke="var(--chip-border)" strokeWidth="1.2" />
+                  <text x={f.x} y={FOUNDATION_Y + 5} textAnchor="middle" fontSize="14">
+                    {f.emoji}
+                  </text>
+                  <text x={f.x} y={FOUNDATION_Y - 26} textAnchor="middle" fontSize="10.5" fill="var(--dim)" fontFamily="var(--font-jetbrains)">
+                    {f.label}
                   </text>
                 </motion.g>
               ))}
@@ -202,7 +197,7 @@ export default function SkillTree() {
                   {b.leaves.map((leaf, li) => (
                     <motion.path
                       key={leaf}
-                      d={curve(b.x, BRANCH_Y + 28, b.x, LEAF_Y + li * LEAF_GAP - 14)}
+                      d={curve(b.x, BRANCH_Y + 28, b.x - (b.leafW ?? 176) / 2 + 6, LEAF_Y + li * LEAF_GAP + 1)}
                       fill="none"
                       stroke={b.color}
                       strokeWidth="1.4"
@@ -336,24 +331,45 @@ export default function SkillTree() {
                     }}
                     onMouseEnter={() => setFocus(bi)}
                   >
+                    {/* dot + text leaf, underlined in the branch color: no boxes */}
                     <rect
-                      x={b.x - (b.leafW ?? 176) / 2}
-                      y={LEAF_Y + li * LEAF_GAP - 14}
-                      width={b.leafW ?? 176}
-                      height="30"
-                      rx="15"
-                      fill="var(--chip-bg)"
-                      stroke={b.color}
-                      strokeOpacity={focus === bi ? 0.9 : 0.45}
-                      strokeWidth="1"
+                      x={b.x - (b.leafW ?? 176) / 2 - 4}
+                      y={LEAF_Y + li * LEAF_GAP - 12}
+                      width={(b.leafW ?? 176) + 8}
+                      height="28"
+                      fill="transparent"
+                    />
+                    <circle
+                      cx={b.x - (b.leafW ?? 176) / 2 + 6}
+                      cy={LEAF_Y + li * LEAF_GAP + 1}
+                      r={focus === bi ? 4 : 3}
+                      fill={b.color}
+                      style={{ transition: "r 0.25s" }}
+                    />
+                    <text
+                      x={b.x - (b.leafW ?? 176) / 2 + 18}
+                      y={LEAF_Y + li * LEAF_GAP + 5}
+                      textAnchor="start"
+                      fontSize="11"
+                      fill="var(--body)"
+                      fontFamily="var(--font-inter)"
                       style={{
-                        filter: focus === bi ? `drop-shadow(0 0 6px ${b.color}66)` : "none",
+                        filter: focus === bi ? `drop-shadow(0 0 5px ${b.color}88)` : "none",
                         transition: "filter 0.3s",
                       }}
-                    />
-                    <text x={b.x} y={LEAF_Y + li * LEAF_GAP + 5} textAnchor="middle" fontSize="10.5" fill="var(--body)" fontFamily="var(--font-inter)">
+                    >
                       {leaf}
                     </text>
+                    <line
+                      x1={b.x - (b.leafW ?? 176) / 2 + 18}
+                      y1={LEAF_Y + li * LEAF_GAP + 12}
+                      x2={b.x + (b.leafW ?? 176) / 2}
+                      y2={LEAF_Y + li * LEAF_GAP + 12}
+                      stroke={b.color}
+                      strokeOpacity={focus === bi ? 0.5 : 0.15}
+                      strokeWidth="1"
+                      style={{ transition: "stroke-opacity 0.3s" }}
+                    />
                   </motion.g>
                 )),
               )}
