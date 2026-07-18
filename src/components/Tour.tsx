@@ -38,6 +38,18 @@ const STEPS: Step[] = [
     tip: "Hover the stat cards, they tilt in 3D.",
   },
   {
+    target: "#activity",
+    emoji: "🟩",
+    title: "Live Coding Activity",
+    text: "A GitHub-style contribution heatmap, rendered live with a wave animation.",
+    highlights: [
+      "📅 A full year of commits with month-by-month labels",
+      "🔥 Current streak and best-day counters",
+      "✨ Hover any cell to see that day's contributions",
+    ],
+    tip: "The glowing cells are his heaviest shipping days.",
+  },
+  {
     target: "#experience",
     emoji: "💼",
     title: "Career Timeline",

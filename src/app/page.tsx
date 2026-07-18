@@ -11,6 +11,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import About from "@/components/About";
+import CodingActivity from "@/components/CodingActivity";
 import Experience from "@/components/Experience";
 import Skills from "@/components/Skills";
 import Engineering from "@/components/Engineering";
@@ -35,6 +36,8 @@ export default function Home() {
         <Hero />
         <Marquee />
         <About />
+        <CodingActivity />
+        <AIDivider />
         <Experience />
         <AIDivider />
         <Skills />

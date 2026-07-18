@@ -116,6 +116,12 @@ export const knowledge: KBEntry[] = [
     action: { type: "open", url: "https://github.com/kothariyashh" },
   },
   {
+    keywords: ["activity", "contributions", "contribution", "commits", "streak", "heatmap", "coding activity"],
+    answer:
+      "Here's Yash's coding activity: a live GitHub contribution heatmap with his yearly commits, current streak and best day. Green means shipping!",
+    action: { type: "scroll", target: "#activity" },
+  },
+  {
     keywords: ["resume", "cv", "download", "pdf"],
     answer:
       "Opening Yash's resume in a new tab where you can read it and download it. There's also a View Resume button in the hero section!",
