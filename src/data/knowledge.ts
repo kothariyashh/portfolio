@@ -43,7 +43,7 @@ export const knowledge: KBEntry[] = [
   {
     keywords: ["project", "projects", "built", "portfolio", "work samples", "showcase"],
     answer:
-      "Featured projects include a multi-agent AI personal assistant platform with SSE streaming and RAG, a GPT-4o financial document extraction system that auto-extracts 80+ fields, an enterprise document processing platform, recruitment automation with AI voice calling, and handwritten form AI with YOLOv8. Take a look!",
+      "Yash has shipped 10+ production AI projects: a multi-agent assistant with SSE streaming, generative image editing with SAM + Stable Diffusion, 3D foot modelling for healthcare, a FAISS face reverse search engine, a doctor booking chatbot on LLaMA 3, GPT-4o financial document extraction, recruitment automation with AI voice calling, shipping label NER and more. Take a look!",
     action: { type: "scroll", target: "#projects" },
   },
   {
@@ -116,9 +116,9 @@ export const knowledge: KBEntry[] = [
     action: { type: "open", url: "https://github.com/kothariyashh" },
   },
   {
-    keywords: ["tree", "skill tree", "overview", "big picture", "summary", "specialties"],
+    keywords: ["tree", "knowledge graph", "graph", "overview", "big picture", "summary", "specialties"],
     answer:
-      "Here's the Yash Tree: one animated structure showing how everything grows from a single root. Data science branches into GenAI & agents, computer vision, data engineering and production systems.",
+      "Here's Yash's Knowledge Graph: one animated structure showing how everything connects from a single root. Data science branches into GenAI & agents, computer vision, data engineering and production systems. Hover the nodes to trace the connections!",
     action: { type: "scroll", target: "#tree" },
   },
   {

@@ -20,7 +20,7 @@ export const profile = {
 
 export const stats = [
   { value: 4, suffix: "+", label: "Years of Experience" },
-  { value: 15, suffix: "+", label: "AI Projects Delivered" },
+  { value: 10, suffix: "+", label: "AI Projects Delivered" },
   { value: 80, suffix: "+", label: "Data Fields Auto-Extracted" },
   { value: 96, suffix: "%", label: "Best Model Accuracy" },
 ];
@@ -226,6 +226,38 @@ export const projects: Project[] = [
     flagship: true,
   },
   {
+    emoji: "🎨",
+    title: "Design Anything: Generative Image Editor",
+    description:
+      "Generative image editing system that pairs Segment Anything (SAM) masks with Stable Diffusion inpainting. Users select any region of an image and transform it with smooth, realistic AI edits powered by state-of-the-art segmentation and diffusion models.",
+    tags: ["SAM", "Stable Diffusion", "TensorFlow", "OpenCV"],
+    categories: ["genai", "vision"],
+  },
+  {
+    emoji: "🦶",
+    title: "3D Foot Modelling for Healthcare",
+    description:
+      "Healthcare platform that reconstructs 3D models of patients' feet from guided video recordings. YOLO detection and TensorFlow.js validation guide the capture in the browser, while an automated RealityCapture pipeline with cron-based retries produces measurement-ready 3D models.",
+    tags: ["YOLO", "TensorFlow.js", "RealityCapture", "OpenCV", "FastAPI"],
+    categories: ["vision"],
+  },
+  {
+    emoji: "🔎",
+    title: "Face Reverse Search Engine",
+    description:
+      "Reverse image search for faces: InsightFace generates facial embeddings, MongoDB stores them, and FAISS vector indexes return ranked cosine-similarity matches in milliseconds through a FastAPI service handling detection, embedding and search end to end.",
+    tags: ["InsightFace", "FAISS", "MongoDB", "FastAPI"],
+    categories: ["vision"],
+  },
+  {
+    emoji: "🩺",
+    title: "Doctor Appointment Booking Chatbot",
+    description:
+      "Conversational AI for healthcare that analyzes symptoms, recommends the right specialist and books the appointment. LangChain agents orchestrate Groq LLaMA 3 reasoning with Google Calendar integration for booking, rescheduling and cancellations.",
+    tags: ["LangChain", "Groq LLaMA 3", "Google Calendar API", "NLP"],
+    categories: ["genai", "automation"],
+  },
+  {
     emoji: "💰",
     title: "Financial Document Extraction System",
     description:
@@ -250,12 +282,12 @@ export const projects: Project[] = [
     categories: ["automation"],
   },
   {
-    emoji: "🔍",
-    title: "AI Document Understanding Platform",
+    emoji: "📦",
+    title: "Shipping Label Entity Recognition",
     description:
-      "Enterprise platform processing complex multi-document PDFs using Computer Vision segmentation, OCR workflows and LangChain + GPT orchestration for classification, field extraction and template-based validation, deployed on Google Cloud.",
-    tags: ["LangChain", "OpenAI GPT", "GCP", "OCR"],
-    categories: ["docai", "vision"],
+      "Logistics desktop application that reads parcel bills automatically. A custom-trained TensorFlow detector locates the bill, image preprocessing corrects skew and rotation, and a spaCy transformer NER model extracts tracking IDs, order IDs and addresses straight into the database.",
+    tags: ["TensorFlow", "spaCy NER", "OpenCV", "Flask"],
+    categories: ["vision", "docai"],
   },
   {
     emoji: "✍️",

@@ -9,10 +9,14 @@ import Reveal from "@/components/effects/Reveal";
 
 const fileNames = [
   "multi_agent_assistant.py",
+  "design_anything_editor.py",
+  "foot_3d_modelling.py",
+  "face_reverse_search.py",
+  "doctor_booking_bot.py",
   "financial_doc_extraction.py",
   "enterprise_idp_platform.py",
   "recruitment_automation.py",
-  "doc_understanding_ai.py",
+  "shipping_label_ner.py",
   "handwritten_form_ai.py",
 ];
 
@@ -63,7 +67,7 @@ export default function Projects() {
           tag="05 · What I've Built"
           title="Project"
           highlight="Explorer"
-          sub="Six production AI platforms. Pick a file, or let it cycle."
+          sub="Ten production AI platforms across GenAI, vision, healthcare, finance and logistics. Pick a file, or let it cycle."
         />
 
         <Reveal>

@@ -111,6 +111,13 @@ body {
   color: #fff;
 }
 
+/* keyboard navigation: visible focus ring on every interactive element */
+:focus-visible {
+  outline: 2px solid #00cec9;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
 .gradient-text {
   background: linear-gradient(120deg, #6c5ce7, #00cec9, #a29bfe, #6c5ce7);
   background-size: 300% auto;
