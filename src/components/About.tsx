@@ -7,11 +7,11 @@ import SectionHead from "@/components/SectionHead";
 const points = [
   {
     icon: "🎓",
-    title: "B.E. — Information & Communication Technology",
+    title: "B.E. in Information & Communication Technology",
     sub: "Marwadi University, Rajkot · 2024",
   },
   { icon: "📍", title: "Ahmedabad, India", sub: "Open to remote & on-site roles" },
-  { icon: "💼", title: "Data Scientist @ Bacancy Technology", sub: "Jan 2024 — Present" },
+  { icon: "💼", title: "Data Scientist @ Bacancy Technology", sub: "Jan 2024 - Present" },
 ];
 
 export default function About() {
@@ -29,8 +29,8 @@ export default function About() {
               architectures, and multi-modal AI that blends text, vision and structured data.
             </p>
             <p className="mb-7 text-dim">
-              I&apos;ve delivered end-to-end AI platforms — from data ingestion and model development to
-              cloud deployment with observability, rate-limiting and resilient error handling — using{" "}
+              I&apos;ve delivered end-to-end AI platforms, from data ingestion and model development to
+              cloud deployment with observability, rate-limiting and resilient error handling, using{" "}
               <strong className="font-semibold text-body">
                 Python, FastAPI, LangChain/LangGraph, TensorFlow, PyTorch and OpenCV
               </strong>{" "}

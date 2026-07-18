@@ -15,7 +15,7 @@ export default function WhyMe() {
           tag="07 · The Business Case"
           title="Why Hire"
           highlight="Me"
-          sub="Challenges I've turned into outcomes — the business perspective."
+          sub="Challenges I've turned into outcomes, from a business perspective."
         />
 
         <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">

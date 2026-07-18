@@ -64,7 +64,7 @@ export default function Hero() {
             Data Scientist with <strong className="font-semibold text-body">4+ years of experience</strong>{" "}
             specializing in <strong className="font-semibold text-body">Generative AI</strong>, advanced{" "}
             <strong className="font-semibold text-body">NLP</strong> and{" "}
-            <strong className="font-semibold text-body">Computer Vision</strong> — shipping
+            <strong className="font-semibold text-body">Computer Vision</strong>. I ship
             production-grade LLM chatbots with streaming responses, citation-grounded RAG,
             multi-agent systems, ETL & AI automation workflows, OCR and document-intelligence
             platforms.

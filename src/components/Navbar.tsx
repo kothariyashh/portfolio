@@ -95,7 +95,7 @@ export default function Navbar() {
                 setTheme(order[(current + 1) % order.length]);
               }}
               aria-label="Cycle color theme (dark / light / glass)"
-              title={mounted ? `Theme: ${resolvedTheme} — click to switch` : "Theme"}
+              title={mounted ? `Theme: ${resolvedTheme} (click to switch)` : "Theme"}
               className="grid h-10 w-10 cursor-pointer place-items-center rounded-xl border border-line bg-surface transition-all hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30"
             >
               {!mounted || resolvedTheme === "dark" ? (

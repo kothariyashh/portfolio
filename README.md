@@ -1,6 +1,6 @@
-# Yash Kothari — Portfolio
+# Yash Kothari Portfolio
 
-Personal portfolio of **Yash Kothari**, Data Scientist & GenAI Engineer — built with Next.js.
+Personal portfolio of **Yash Kothari**, Data Scientist & AI Engineer, built with Next.js.
 
 **Live site:** https://kothariyashh.github.io/portfolio/
 
@@ -9,8 +9,8 @@ Personal portfolio of **Yash Kothari**, Data Scientist & GenAI Engineer — buil
 - [Next.js 16](https://nextjs.org/) (App Router, static export)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS v4](https://tailwindcss.com/)
-- [Framer Motion](https://www.framer.com/motion/) — scroll reveals, 3D tilt, magnetic buttons, layout animations
-- [next-themes](https://github.com/pacocoursey/next-themes) — dark/light mode
+- [Framer Motion](https://www.framer.com/motion/): scroll reveals, 3D tilt, magnetic buttons, layout animations
+- [next-themes](https://github.com/pacocoursey/next-themes): dark/light/glass mode
 
 ## Features
 

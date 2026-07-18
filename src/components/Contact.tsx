@@ -23,7 +23,7 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const body = encodeURIComponent(
-      `Hi Yash,\n\n${form.message}\n\n— ${form.name} (${form.email})`,
+      `Hi Yash,\n\n${form.message}\n\nRegards,\n${form.name} (${form.email})`,
     );
     const subject = encodeURIComponent(form.subject || `Portfolio inquiry from ${form.name}`);
     window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
@@ -39,7 +39,7 @@ export default function Contact() {
           tag="08 · Let's Talk"
           title="Connect With"
           highlight="AI"
-          sub="Data Scientist & AI Engineer — have an AI product to build, a workflow to automate, or a role to fill? My inbox is always open."
+          sub="Have an AI product to build, a workflow to automate, or a role to fill? My inbox is always open."
         />
 
         <div className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">

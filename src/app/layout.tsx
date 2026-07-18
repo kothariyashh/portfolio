@@ -8,9 +8,9 @@ const sora = Sora({ variable: "--font-sora", subsets: ["latin"] });
 const jetbrains = JetBrains_Mono({ variable: "--font-jetbrains", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Yash Kothari — Data Scientist & GenAI Engineer",
+  title: "Yash Kothari | Data Scientist & AI Engineer",
   description:
-    "Yash Kothari — Data Scientist with 4+ years of experience in Generative AI, NLP, Computer Vision, LLMs, RAG pipelines and multi-agent systems.",
+    "Yash Kothari is a Data Scientist with 4+ years of experience in Generative AI, NLP, Computer Vision, LLMs, RAG pipelines and multi-agent systems.",
   keywords: [
     "Yash Kothari",
     "Data Scientist",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Yash Kothari" }],
   openGraph: {
-    title: "Yash Kothari — Data Scientist & GenAI Engineer",
+    title: "Yash Kothari | Data Scientist & AI Engineer",
     description:
       "Building production-grade AI systems: LLM chatbots, RAG pipelines, multi-agent architectures, computer vision and document intelligence.",
     type: "website",

@@ -12,7 +12,7 @@ export default function Engineering() {
           tag="04 · How I Engineer"
           title="Engineering"
           highlight="DNA"
-          sub="Models are half the story — I build the production systems around them: fast, concurrent, resilient and observable."
+          sub="Models are half the story. I build the production systems around them: fast, concurrent, resilient and observable."
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {engineering.map((e, i) => (

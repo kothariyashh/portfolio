@@ -27,25 +27,25 @@ export const stats = [
 
 export const experience = [
   {
-    period: "Jan 2024 — Present",
+    period: "Jan 2024 - Present",
     role: "Data Scientist",
     company: "Bacancy Technology",
     location: "Ahmedabad, India",
     description:
-      "Building production-grade Generative AI systems — LLM-powered chatbots, RAG pipelines and supervisor-routed multi-agent architectures. Delivering end-to-end AI platforms with LangChain/LangGraph, vector databases, semantic search and multi-modal AI, from data processing through deployment with full observability.",
+      "Building production-grade Generative AI systems including LLM-powered chatbots, RAG pipelines and supervisor-routed multi-agent architectures. Delivering end-to-end AI platforms with LangChain/LangGraph, vector databases, semantic search and multi-modal AI, from data processing through deployment with full observability.",
     tags: ["LangGraph", "RAG", "Vertex AI", "FastAPI", "OpenSearch"],
   },
   {
-    period: "Jan 2023 — Jan 2024",
+    period: "Jan 2023 - Jan 2024",
     role: "AI Implementation Strategist",
     company: "VanceIQ",
     location: "Ahmedabad, India",
     description:
-      "Designed, implemented and deployed AI-driven solutions for real-world business challenges — integrating LLMs, RAG, Computer Vision and Machine Learning into scalable applications while defining AI strategy and optimizing team workflows end to end.",
+      "Designed, implemented and deployed AI-driven solutions for real-world business challenges by integrating LLMs, RAG, Computer Vision and Machine Learning into scalable applications, while defining AI strategy and optimizing team workflows end to end.",
     tags: ["LLMs", "Computer Vision", "AI Strategy", "ML"],
   },
   {
-    period: "May 2023 — Jul 2023",
+    period: "May 2023 - Jul 2023",
     role: "Artificial Intelligence Intern",
     company: "Version System Pvt. Ltd.",
     location: "Rajkot, India",
@@ -54,7 +54,7 @@ export const experience = [
     tags: ["Face Recognition", "Flask", "OpenCV", "Postman"],
   },
   {
-    period: "Feb 2022 — Aug 2022",
+    period: "Feb 2022 - Aug 2022",
     role: "Data Analyst Intern",
     company: "Technolabs Software Inc.",
     location: "Remote",
@@ -119,42 +119,42 @@ export const engineering = [
     icon: "⚡",
     title: "Latency & Performance",
     description:
-      "Obsessed with fast AI systems — cached vector stores, TTL caching, asynchronous embedding generation and per-step latency monitoring to keep RAG responses snappy under load.",
+      "Obsessed with fast AI systems. I use cached vector stores, TTL caching, asynchronous embedding generation and per-step latency monitoring to keep RAG responses snappy under load.",
     tags: ["TTL Caching", "Vector Store Caching", "Latency Monitoring", "Token Budgeting"],
   },
   {
     icon: "🔀",
     title: "Concurrency & Async",
     description:
-      "Async-first Python: AsyncIO services, fair semaphores, threading and timezone-aware APScheduler jobs — with SSE streaming and connection pooling for high-volume concurrent workloads.",
+      "Async-first Python: AsyncIO services, fair semaphores, threading and timezone-aware APScheduler jobs, with SSE streaming and connection pooling for high-volume concurrent workloads.",
     tags: ["AsyncIO", "Fair Semaphores", "SSE Streaming", "APScheduler", "Connection Pooling"],
   },
   {
     icon: "🛡️",
     title: "Resilience Engineering",
     description:
-      "Systems that survive bad days — circuit breakers, intelligent retry mechanisms, regional-to-global endpoint fallbacks and automatic handling of rate-limit (429) and availability (404) errors.",
+      "Systems that survive bad days, built with circuit breakers, intelligent retry mechanisms, regional-to-global endpoint fallbacks and automatic handling of rate-limit (429) and availability (404) errors.",
     tags: ["Circuit Breakers", "Retries & Backoff", "Regional Fallback", "Rate-Limit Handling"],
   },
   {
     icon: "🚀",
     title: "Deployment & CI/CD",
     description:
-      "From notebook to production — Dockerized services shipped to AWS ECS and GCP with GitHub Actions pipelines, fail-fast singleton initialization and contract-tested releases.",
+      "From notebook to production: Dockerized services shipped to AWS ECS and GCP with GitHub Actions pipelines, fail-fast singleton initialization and contract-tested releases.",
     tags: ["Docker", "AWS ECS", "GCP", "GitHub Actions", "Contract Testing"],
   },
   {
     icon: "📡",
     title: "Observability",
     description:
-      "If it isn't measured, it isn't done — structured logging, distributed trace propagation, CloudWatch EMF metrics and Bugsnag error monitoring with typed exceptions and PII redaction.",
+      "If it isn't measured, it isn't done. I set up structured logging, distributed trace propagation, CloudWatch EMF metrics and Bugsnag error monitoring with typed exceptions and PII redaction.",
     tags: ["Structured Logging", "CloudWatch EMF", "Bugsnag", "Distributed Tracing"],
   },
   {
     icon: "🔐",
     title: "Security & Auth",
     description:
-      "Compliance-ready AI — OAuth2 with Microsoft Graph, JWT and API-key auth, plus automated PII masking with secure restoration for sensitive financial documents.",
+      "Compliance-ready AI using OAuth2 with Microsoft Graph, JWT and API-key auth, plus automated PII masking with secure restoration for sensitive financial documents.",
     tags: ["OAuth2", "JWT", "PII Masking", "Data Compliance"],
   },
 ];
@@ -171,9 +171,9 @@ export type Project = {
 export const projects: Project[] = [
   {
     emoji: "🤖",
-    title: "Sidekick AI — Multi-Agent Assistant Platform",
+    title: "Sidekick AI: Multi-Agent Assistant Platform",
     description:
-      "Production-grade FastAPI backend powering an AI assistant with REST + SSE streaming responses. A LangGraph supervisor agent orchestrates specialized agents for email, calendar, notes, tasks, messenger, web search, image generation and maps — with citation-ready reference tracking, RAG over OpenSearch vector search, resilient Vertex AI/Gemini fallbacks, rate-limit budgeting and circuit breakers.",
+      "Production-grade FastAPI backend powering an AI assistant with REST + SSE streaming responses. A LangGraph supervisor agent orchestrates specialized agents for email, calendar, notes, tasks, messenger, web search, image generation and maps, with citation-ready reference tracking, RAG over OpenSearch vector search, resilient Vertex AI/Gemini fallbacks, rate-limit budgeting and circuit breakers.",
     tags: ["FastAPI", "LangGraph", "Gemini", "OpenSearch", "AWS ECS"],
     categories: ["genai"],
     flagship: true,
@@ -182,7 +182,7 @@ export const projects: Project[] = [
     emoji: "💰",
     title: "Financial Document Extraction System",
     description:
-      "Intelligent document processing API using GPT-4o that auto-extracts 80+ structured fields from financial documents via a multi-stage pipeline — Mistral OCR, Google Vision and spaCy NER — with PII masking and per-step performance tracking.",
+      "Intelligent document processing API using GPT-4o that auto-extracts 80+ structured fields from financial documents via a multi-stage pipeline of Mistral OCR, Google Vision and spaCy NER, with PII masking and per-step performance tracking.",
     tags: ["GPT-4o", "Mistral OCR", "spaCy NER", "FastAPI"],
     categories: ["docai", "genai"],
   },
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     emoji: "📄",
     title: "Enterprise Intelligent Document Processing",
     description:
-      "Enterprise-scale IDP platform automating extraction, validation and summarization of financial information — combining OCR, dynamic LLM prompt orchestration, spaCy PII masking with secure restoration, and checklist-driven extraction as modular microservices.",
+      "Enterprise-scale IDP platform automating extraction, validation and summarization of financial information. It combines OCR, dynamic LLM prompt orchestration, spaCy PII masking with secure restoration, and checklist-driven extraction as modular microservices.",
     tags: ["OpenAI", "PyMuPDF", "PII Masking", "Microservices"],
     categories: ["docai"],
   },
@@ -198,7 +198,7 @@ export const projects: Project[] = [
     emoji: "📞",
     title: "Recruitment Automation Platform",
     description:
-      "Event-driven recruitment platform automating candidate sourcing, job matching and outreach — AI voice calling via Bland AI with intelligent retry scheduling, Microsoft Graph email processing, MixRank enrichment and timezone-aware APScheduler jobs on PostgreSQL.",
+      "Event-driven recruitment platform automating candidate sourcing, job matching and outreach. It features AI voice calling via Bland AI with intelligent retry scheduling, Microsoft Graph email processing, MixRank enrichment and timezone-aware APScheduler jobs on PostgreSQL.",
     tags: ["Bland AI", "MS Graph", "PostgreSQL", "APScheduler"],
     categories: ["automation"],
   },
@@ -206,7 +206,7 @@ export const projects: Project[] = [
     emoji: "🔍",
     title: "AI Document Understanding Platform",
     description:
-      "Enterprise platform processing complex multi-document PDFs — Computer Vision segmentation, OCR workflows and LangChain + GPT orchestration for classification, field extraction and template-based validation, deployed on Google Cloud.",
+      "Enterprise platform processing complex multi-document PDFs using Computer Vision segmentation, OCR workflows and LangChain + GPT orchestration for classification, field extraction and template-based validation, deployed on Google Cloud.",
     tags: ["LangChain", "OpenAI GPT", "GCP", "OCR"],
     categories: ["docai", "vision"],
   },
@@ -214,7 +214,7 @@ export const projects: Project[] = [
     emoji: "✍️",
     title: "Handwritten Financial Form AI",
     description:
-      "Deep-learning platform extracting structured data from handwritten and scanned banking forms — YOLOv8 entity detection + PaddleOCR text extraction with auto-labeling scripts and a training scheduler for continuous retraining across layouts and handwriting styles.",
+      "Deep-learning platform extracting structured data from handwritten and scanned banking forms. It pairs YOLOv8 entity detection with PaddleOCR text extraction, auto-labeling scripts and a training scheduler for continuous retraining across layouts and handwriting styles.",
     tags: ["YOLOv8", "PaddleOCR", "OpenCV", "Google Vision"],
     categories: ["vision"],
   },
@@ -230,7 +230,7 @@ export const projectFilters = [
 
 export const whyHireMe = {
   pitch:
-    "I'm not just a model-builder — I'm a Data Scientist & AI Engineer who turns business problems into shipped, revenue-relevant AI systems. From the first data pipeline to the streaming response your users see, I own the whole journey.",
+    "I'm not just a model-builder. I'm a Data Scientist & AI Engineer who turns business problems into shipped, revenue-relevant AI systems. From the first data pipeline to the streaming response your users see, I own the whole journey.",
   strengths: [
     "End-to-end ownership: data ingestion → ETL → model → API → cloud deployment",
     "Business-first communication with technical and non-technical stakeholders",
@@ -242,7 +242,7 @@ export const whyHireMe = {
       icon: "🧾",
       problem: "Manual back-office drain",
       solution:
-        "Automated extraction of 80+ structured fields from financial documents with OCR + GPT-4o pipelines — slashing manual data entry and error rates.",
+        "Automated extraction of 80+ structured fields from financial documents with OCR + GPT-4o pipelines, slashing manual data entry and error rates.",
       metric: "80+ fields automated",
     },
     {
@@ -256,28 +256,28 @@ export const whyHireMe = {
       icon: "⏱️",
       problem: "High-pressure deadlines",
       solution:
-        "Trusted with critical deliveries — earned a Spot Award for shipping under pressure and Team of the Quarter Q1 2026 for consistent execution.",
+        "Trusted with critical deliveries: earned a Spot Award for shipping under pressure and Team of the Quarter Q1 2026 for consistent execution.",
       metric: "2× awarded",
     },
     {
       icon: "🔍",
       problem: "Can we trust AI answers?",
       solution:
-        "Built citation-grounded RAG with reference tracking and schema-validated structured outputs — every AI answer traceable back to its source.",
+        "Built citation-grounded RAG with reference tracking and schema-validated structured outputs, so every AI answer is traceable back to its source.",
       metric: "Traceable answers",
     },
     {
       icon: "💬",
       problem: "Chatbots that feel slow",
       solution:
-        "Delivered SSE streaming responses with cached vector stores and async embedding generation — real-time AI that feels instant to users.",
+        "Delivered SSE streaming responses with cached vector stores and async embedding generation for real-time AI that feels instant to users.",
       metric: "Real-time streaming",
     },
     {
       icon: "🔄",
       problem: "Repetitive human workflows",
       solution:
-        "Automated recruiter operations end-to-end with AI voice calling, smart retry scheduling and event-driven pipelines — freeing teams for higher-value work.",
+        "Automated recruiter operations end-to-end with AI voice calling, smart retry scheduling and event-driven pipelines, freeing teams for higher-value work.",
       metric: "Hours saved daily",
     },
   ],
@@ -286,7 +286,7 @@ export const whyHireMe = {
 export const awards = [
   {
     icon: "🏆",
-    title: "Team of the Quarter — Q1 2026",
+    title: "Team of the Quarter (Q1 2026)",
     description:
       "Recognized for outstanding performance and strong team contribution at Bacancy Technology.",
   },
@@ -298,7 +298,7 @@ export const awards = [
   },
   {
     icon: "🎓",
-    title: "B.E. — Information & Communication Technology",
+    title: "B.E. in Information & Communication Technology",
     description: "Marwadi University, Rajkot · Class of 2024.",
   },
 ];
