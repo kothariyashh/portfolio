@@ -45,7 +45,7 @@ export default function WelcomeToast() {
             <div className="flex-1">
               <p className="mb-1 font-display text-sm font-bold">New here? Let me show you around</p>
               <p className="mb-3 text-xs text-dim">
-                Take a quick guided tour, or chat with K.AI, my assistant that knows everything on
+                Take a quick guided tour, or chat with Kothari.AI, my assistant that knows everything on
                 this site.
               </p>
               <div className="flex flex-wrap gap-2.5">
@@ -59,7 +59,7 @@ export default function WelcomeToast() {
                   onClick={openChat}
                   className="cursor-pointer rounded-lg border border-accent/40 px-3.5 py-1.5 font-display text-xs font-semibold text-accent transition-all hover:-translate-y-0.5 hover:border-accent"
                 >
-                  Chat with K.AI
+                  Chat with Kothari.AI
                 </button>
                 <button
                   onClick={dismiss}

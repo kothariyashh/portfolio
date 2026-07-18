@@ -12,12 +12,13 @@ export type KBEntry = {
 };
 
 export const suggestions = [
-  "Who is Yash?",
-  "Show me his projects",
-  "What are his skills?",
-  "Why should I hire him?",
-  "How can I contact him?",
-  "Switch to glass theme",
+  "👋 Who is Yash?",
+  "🚀 Show me his projects",
+  "🧭 Take a tour",
+  "🧠 What are his skills?",
+  "💼 Why should I hire him?",
+  "📬 How can I contact him?",
+  "🎨 Switch to glass theme",
 ];
 
 export const knowledge: KBEntry[] = [
@@ -40,7 +41,7 @@ export const knowledge: KBEntry[] = [
     action: { type: "scroll", target: "#skills" },
   },
   {
-    keywords: ["project", "projects", "built", "portfolio", "work samples", "sidekick", "showcase"],
+    keywords: ["project", "projects", "built", "portfolio", "work samples", "showcase"],
     answer:
       "Featured projects include a multi-agent AI personal assistant platform with SSE streaming and RAG, a GPT-4o financial document extraction system that auto-extracts 80+ fields, an enterprise document processing platform, recruitment automation with AI voice calling, and handwritten form AI with YOLOv8. Take a look!",
     action: { type: "scroll", target: "#projects" },
@@ -153,6 +154,24 @@ export const knowledge: KBEntry[] = [
     action: { type: "scroll", target: "#contact" },
   },
   {
+    keywords: ["rag", "retrieval", "embedding", "embeddings", "vector", "semantic search", "reranking", "hybrid search"],
+    answer:
+      "Yash builds production RAG systems end to end: embedding generation with OpenAI models, kNN vector search on AWS OpenSearch, hybrid retrieval with reranking, TTL-cached vector stores, and citation-grounded answers with reference tracking so every response is traceable to its source.",
+    action: { type: "scroll", target: "#skills" },
+  },
+  {
+    keywords: ["fine-tuning", "fine tuning", "lora", "peft", "quantization", "training", "transformers", "attention"],
+    answer:
+      "On the model side, Yash works with transformer architectures, fine-tuning concepts including LoRA/PEFT, quantization for efficient inference, and rigorous model evaluation. He backs it with continuous study of the underlying math and deep learning fundamentals.",
+    action: { type: "scroll", target: "#skills" },
+  },
+  {
+    keywords: ["mlops", "llmops", "monitoring", "drift", "evals", "evaluation", "guardrails", "hallucination"],
+    answer:
+      "Yash treats AI like a product: guardrails and safety-filter handling, LLM evals, token usage tracking, model monitoring with CloudWatch metrics, structured logging with PII redaction, and automated retraining schedulers for vision pipelines.",
+    action: { type: "scroll", target: "#engineering" },
+  },
+  {
     keywords: ["tour", "walkthrough", "walk through", "guide", "show me around", "explore"],
     answer: "Starting the guided tour. Sit back, I'll walk you through the whole portfolio!",
     action: { type: "tour" },
@@ -160,7 +179,7 @@ export const knowledge: KBEntry[] = [
   {
     keywords: ["hello", "hi", "hey", "namaste", "good morning", "good evening"],
     answer:
-      "Hello! I'm K.AI, Yash's portfolio assistant. Ask me about his skills, projects, experience, or say things like 'show projects', 'take a tour' or 'switch to glass theme'.",
+      "Hello! I'm Kothari.AI, Yash's personal AI assistant. Ask me about his skills, projects, experience, or say things like 'show projects', 'take a tour' or 'switch to glass theme'.",
   },
   {
     keywords: ["thanks", "thank", "great", "awesome", "cool", "nice"],
@@ -169,7 +188,7 @@ export const knowledge: KBEntry[] = [
   {
     keywords: ["chatbot", "you", "bot", "assistant", "what can you do", "help"],
     answer:
-      "I'm K.AI, a built-in assistant with a knowledge base about Yash. I can answer questions about his experience, skills, projects and awards, give you a guided tour, filter projects, switch themes (try 'glass theme'), and share contact details. What would you like?",
+      "I'm Kothari.AI, a built-in assistant with a knowledge base about Yash. I can answer questions about his experience, skills, projects and awards, give you a guided tour, filter projects, switch themes (try 'glass theme'), and share contact details. What would you like?",
   },
 ];
 
